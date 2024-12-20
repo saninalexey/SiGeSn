@@ -6,12 +6,11 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import AutoMinorLocator
 from sklearn.decomposition import PCA
 
-### data load ios
-
+### data loading
 Q_pred = pd.read_csv('data/pred_Q.csv', header=0, sep='\,')
-#data_raman = pd.read_csv("data/raman_data_prisma.csv", header=0, index_col=0, sep='\,')
-#data_xrd = pd.read_csv("data/xrd_data.csv", header=0, index_col=0, sep='\,')
-#df = pd.read_csv("data/df_109.csv", header=0, index_col=0, sep='\,')
+data_raman = pd.read_csv("data/raman_data_prisma.csv", header=0, index_col=0, sep='\,')
+data_xrd = pd.read_csv("data/xrd_data.csv", header=0, index_col=0, sep='\,')
+df = pd.read_csv("data/df_109.csv", header=0, index_col=0, sep='\,')
 
 ### data selection
 C = df.iloc[:,2:5]
@@ -280,9 +279,7 @@ for axis in ['top','bottom','left','right']:
 plt.title('PCA of the Raman data', fontsize=18)
 plt.show()
 
-
-
-### Data PCs
+### Data PCs save
 
 df_pca = pd.concat([raman_df_spec['PC 1'], raman_df_spec['PC 2'], xrd_df_spec['PC 1'], xrd_df_spec['PC 2']], axis=1)
 df_pca.columns = ['Raman PC 1', 'Raman PC 2', 'XRD PC 1', 'XRD PC 2']
